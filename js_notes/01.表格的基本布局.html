@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格</title>
+    <style type="text/css">
+        #two{
+            width: 300px;
+            margin: 50px auto;
+            border: 10px solid pink;
+
+            /*border-spacing可以用来设置表格边框之间的距离*/
+            border-spacing: 50px;
+            
+            /*
+             * border-collapse可以用来设置表格的边框的合并
+             * 	如果将值设置collapse，则table和td的边框将会自动合并为一个
+             * 	当设置了边框合并以后，border-spacing将自动失效
+             */
+            border-collapse: collapse;
+        }
+        
+        #two td, #two th{
+            /*设置边框 取值同表格的整体边框时 单元格的边框会覆盖整体边框*/
+            border: 9px solid #666;
+        }
+        
+        #two>tbody>tr{
+            background-color: #bfa;
+        }
+        
+        #three{
+            width: 500px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        
+        #three td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" width="20%" align="center">
+        <!-- table标签作为一个表格的框架 width属性决定表格的宽度 -->
+        <tr>
+        <!--在table标签中使用tr来表示表格中的一行，有几行就有几个tr-->
+            <th>一</th>
+            <th>二</th>
+            <th>三</th>
+            <th>四</th>
+            <th>五</th>
+            <!-- th标签作为表格头有默认样式 -->
+        </tr>
+
+        <tr>
+            <!--在tr中使用td表示一个单元格，有几个td就有几个单元格-->
+            <td>A1</td>
+            <td>A2</td>
+            <td>A3</td>
+            <td>A4</td>
+            <td>A5</td>
+            <td>A6</td>
+            <!-- 一行内 单元格的个数向最多的对齐 -->
+        </tr>
+        
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+            <td rowspan="2">B4</td>
+            <!-- 使用rowspan来纵向的合并单元格 -->
+        </tr>
+        
+        <tr>
+            <td>C1</td>
+            <td>C2</td>
+            <td>C3</td>
+        </tr>
+        
+        <tr>
+            <td>D1</td>
+            <td>D2</td>
+            <td colspan="2">D3</td>
+            <!-- 使用colspan来横向的合并单元格 -->
+        </tr> 
+
+        <tr>
+            <td>E1</td>
+            <td>E2</td>
+            <td>E3</td>
+            <td rowspan="2" colspan="2" align="center">E4</td>
+            <!-- align属性用于单元格的内容居中 -->
+        </tr> 
+
+        <tr>
+            <td>F1</td>
+            <td>F2</td>
+            <td>F3</td>
+        </tr> 
+    </table>
+
+    <!-- table是一个块元素 -->
+    <table id="two">
+        <!--
+            我们在创建一个表格时，如果没有使用thead tbody tfoot这些标签时，
+                浏览器会自动在页面中添加tbody，并且将所有的tr都放到tbody中
+                所以实际上tr并不是table子元素，而是tbody的子元素
+            
+            <table>
+                <tbody>
+                    <tr>...</tr>
+                    <tr>...</tr>
+                    <tr>...</tr>
+                    ...
+                </tbody>
+            </table>
+        -->
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>住址</th>
+        </tr>
+        
+        <tr>
+            <td>1</td>
+            <td>孙悟空</td>
+            <td>18</td>
+            <td>花果山</td>
+        </tr>
+        
+        <tr>
+            <td>2</td>
+            <td>猪八戒</td>
+            <td>28</td>
+            <td>高老庄</td>
+        </tr>
+        
+        <tr>
+            <td>3</td>
+            <td>沙和尚</td>
+            <td>38</td>
+            <td>流沙河</td>
+        </tr>
+    </table>
+
+    <table id="three">
+        <!-- 
+            HTML中还为我们提供了三个标签，用来将表格分成三个部分
+            <thead>
+                
+            <tbody>
+                
+            <tfoot>	
+                
+            我们可以将对应部分的tr，放到指定的标签	
+            无论编写到什么位置，thead中的内容，永远都会显示在表格的头部
+            而tfoot中的内容，永远都会显示在表格的底部
+            
+        -->
+        <tfoot>
+            <tr>
+                <td>底部</td>
+                <td>底部</td>
+            </tr>
+        </tfoot>
+        <thead>
+            <tr>
+                <td>头部</td>
+                <td>头部</td>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <td>中部</td>
+                <td>中部</td>
+            </tr>
+            <tr>
+                <td>中部</td>
+                <td>中部</td>
+            </tr>
+            <tr>
+                <td>中部</td>
+                <td>中部</td>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>
